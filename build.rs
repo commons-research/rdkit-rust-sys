@@ -1,10 +1,16 @@
-fn main() {
+use std::error::Error;
+
+fn main() -> Result<(), Box<dyn Error>> {
+    dotenvy::dotenv()?;
+
+    // load the RDKIT_DIR
+    let rdkit_dir = dotenvy::var("RDKIT_DIR")?;
+    let rdkit_lib = format!("{}/lib", rdkit_dir);
+    let rdkit_include = format!("{}/Code", rdkit_dir);
+
     // wehave compiled rdkit in our system we now want to tell rust where the
     // dylib file are
-    println!(
-        "cargo:rustc-link-search=native={}",
-        "/Users/Marco/github/rdkit-Release_2024_03_6/lib"
-    );
+    println!("cargo:rustc-link-search=native={}", rdkit_lib);
 
     // we also want to tell rust to link the rdkit dylib file
     for lib in &[
@@ -37,11 +43,12 @@ fn main() {
         .file("src/wrapper.cc")
         .std("c++17")
         .include(std::env::var("CARGO_MANIFEST_DIR").unwrap())
-        .includes(vec!["/Users/Marco/github/rdkit-Release_2024_03_6/Code"])
+        .includes(vec![rdkit_include])
         .warnings(false)
         .compile("test");
 
     println!("cargo:rerun-if-changed=src/lib.rs");
     println!("cargo:rerun-if-changed=src/wrapper.cc");
     println!("cargo:rerun-if-changed=include/wrapper.h");
+    Ok(())
 }

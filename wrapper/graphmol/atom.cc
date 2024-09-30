@@ -1,4 +1,4 @@
-#include "rdkit-rust-ffi/include/wrapper.h"
+#include "rdkit-rust-ffi/wrapper/graphmol/atom.h"
 
 namespace RDKit {
 std::shared_ptr<Atom> make_shared(std::unique_ptr<Atom> atom) { return std::shared_ptr<Atom>(atom.release()); }

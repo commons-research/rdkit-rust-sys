@@ -4,9 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cxx = "1.0.128"
+cxx = "1.0"
 
 
 [build-dependencies]
 cxx-build = "1.0"
 dotenvy = "0.15.7"
+walkdir = "2.5.0"

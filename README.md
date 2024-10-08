@@ -14,7 +14,7 @@ tar -xvzf Release_2024_03_6.tar.gz
 cd rdkit-Release_2024_03_6
 mkdir build
 cd build
-cmake .. -DRDK_BUILD_INCHI_SUPPORT=ON
+cmake .. -DRDK_BUILD_INCHI_SUPPORT=ON -DRDK_BUILD_PYTHON_WRAPPERS=OFF
 make
 ```
 

@@ -13,7 +13,7 @@ bool MatchRust(const Atom &atom, std::unique_ptr<Atom> other) { return atom.Matc
 int calcExplicitValence(Atom &atom) { return atom.calcExplicitValence(); }
 int calcImplicitValence(Atom &atom) { return atom.calcImplicitValence(); }
 
-using ChiralType = Atom::ChiralType;
+using ChiralType        = Atom::ChiralType;
 using HybridizationType = Atom::HybridizationType;
 
 rust::String getQueryTypeRust(const Atom &atom) { return atom.getQueryType(); }

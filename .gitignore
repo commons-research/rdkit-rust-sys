@@ -2,3 +2,4 @@
 .DS_Store
 rdkit-Release_2024_03_6
 .env
+Cargo.lock

@@ -6,21 +6,9 @@ A first implementation of RDKit in Rust was made [here](https://github.com/rdkit
 This is an example with the Atom class. Almost all the functions are implemented and this was made in a few hours of work.
 
 ## Installation
-First you need to install RDKit. 
-
+First you need to install Boost-python: 
 ```bash
-wget https://github.com/rdkit/rdkit/archive/refs/tags/Release_2024_03_6.tar.gz
-tar -xvzf Release_2024_03_6.tar.gz
-cd rdkit-Release_2024_03_6
-mkdir build
-cd build
-cmake .. -DRDK_BUILD_INCHI_SUPPORT=ON -DRDK_BUILD_PYTHON_WRAPPERS=OFF
-make
-```
-
-Once this is done you can download this repository and create a `.env` file with the path to the RDKit installation. 
-```bash
-RDKIT_DIR=/path/to/rdkit-Release_2024_03_6
+brew install rdkit
 ```
 
 Then you can run the tests with:

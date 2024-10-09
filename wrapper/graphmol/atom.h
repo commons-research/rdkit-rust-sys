@@ -3,7 +3,6 @@
 #include <GraphMol/Atom.h>
 #include <iostream>
 #include <memory>
-
 namespace RDKit {
 std::shared_ptr<Atom> make_shared(std::unique_ptr<Atom> atom);
 std::unique_ptr<Atom> newAtom();
@@ -18,8 +17,7 @@ bool MatchRust(const Atom &atom, std::unique_ptr<Atom> other);
 int calcExplicitValence(Atom &atom, bool strict = true);
 int calcImplicitValence(Atom &atom, bool strict = true);
 
-
-using ChiralType = Atom::ChiralType;
+using ChiralType        = Atom::ChiralType;
 using HybridizationType = Atom::HybridizationType;
 
 rust::String getQueryTypeRust(const Atom &atom);

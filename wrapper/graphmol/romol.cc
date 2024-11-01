@@ -12,5 +12,6 @@ std::shared_ptr<ROMol> newMolFromSmilesAsSharedPtr(const std::string &smiles) {
 }
 unsigned int getAtomDegree(const ROMol &mol, const Atom &atom) { return mol.getAtomDegree(&atom); }
 const Atom &getAtomWithIdx(const RDKit::ROMol &mol, unsigned int idx) { return *mol.getAtomWithIdx(idx); }
+Atom &getAtomWithBookmark(RDKit::ROMol &mol, int mark) { return *mol.getAtomWithBookmark(mark); }
 Atom &getMutableAtomWithIdx(RDKit::ROMol &mol, unsigned int idx) { return *mol.getAtomWithIdx(idx); }
 } // namespace RDKit

@@ -4,3 +4,8 @@ mod romol;
 pub use romol::ffi as romol_ffi;
 
 pub use romol::ROMolExt;
+
+pub mod periodic_table;
+pub use periodic_table::ffi as periodic_table_ffi;
+
+pub mod conformer;

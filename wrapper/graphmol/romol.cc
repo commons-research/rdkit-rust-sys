@@ -1,5 +1,4 @@
 #include "rdkit-rust-ffi/wrapper/graphmol/romol.h"
-#include <memory>
 
 namespace RDKit {
 std::unique_ptr<ROMol> newMolFromSmiles(const std::string &smiles) {

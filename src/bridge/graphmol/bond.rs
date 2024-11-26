@@ -3,6 +3,7 @@ use ffi::Bond;
 
 #[cxx::bridge(namespace = "RDKit")]
 mod ffi {
+
     #[repr(i32)]
     #[derive(Debug, PartialEq, Clone)]
     enum BondDir {
@@ -64,6 +65,7 @@ mod ffi {
         type BondDir;
         type BondStereo;
         type BondType;
+        type ROMol = crate::graphmol::romol::ffi::ROMol;
         fn getBondDir(self: &Bond) -> BondDir;
         fn getBondType(self: &Bond) -> BondType;
         fn getStereo(self: &Bond) -> BondStereo;
@@ -82,6 +84,31 @@ mod ffi {
 
         /// Returns whether or not this instance belongs to a molecule
         fn hasOwningMol(self: &Bond) -> bool;
+
+        fn hasQuery(self: &Bond) -> bool;
+
+        /// Sets the index of our begin Atom
+        /// # Notes
+        /// - requires an owning molecule
+        fn setBeginAtomIdx(self: Pin<&mut Bond>, idx: u32);
+
+        fn setBondDir(self: Pin<&mut Bond>, dir: BondDir);
+        fn setBondType(self: Pin<&mut Bond>, what: BondType);
+        fn setStereo(self: Pin<&mut Bond>, stereo: BondStereo);
+
+        /// Sets the index of our end Atom
+        /// # Notes
+        /// - requires an owning molecule
+        fn setEndAtomIdx(self: Pin<&mut Bond>, idx: u32);
+
+        /// sets our index within the ROMol
+        fn setIdx(self: Pin<&mut Bond>, idx: u32);
+
+        fn setIsAromatic(self: Pin<&mut Bond>, val: bool);
+        fn setIsConjugated(self: Pin<&mut Bond>, val: bool);
+        fn setOwningMol(self: Pin<&mut Bond>, mol: Pin<&mut ROMol>);
+        fn setStereoAtoms(self: Pin<&mut Bond>, bgnIdx: u32, endIdx: u32);
+        fn updatePropertyCache(self: Pin<&mut Bond>, strict: bool);
 
     }
 }

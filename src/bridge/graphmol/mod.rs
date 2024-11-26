@@ -9,3 +9,6 @@ pub mod periodic_table;
 pub use periodic_table::ffi as periodic_table_ffi;
 
 pub mod conformer;
+
+pub mod bond;
+pub mod stereo_group;

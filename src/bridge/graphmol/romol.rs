@@ -25,7 +25,8 @@ pub mod ffi {
 
         /// Returns the atom with a molecule at a given index in a mutable molecule.
         /// If the index is out of bounds, this will throw an exception.
-        fn getMutableAtomWithIdx(mol: Pin<&mut ROMol>, idx: u32) -> Result<Pin<&mut Atom>>;
+        #[rust_name = getMutableAtomWithIdx]
+        fn getAtomWithIdx(mol: Pin<&mut ROMol>, idx: u32) -> Result<Pin<&mut Atom>>;
 
         /// Returns the degree of an atom in a molecule.
         /// The atom needs to be owned by the molecule.
@@ -50,6 +51,9 @@ pub mod ffi {
 
         /// Return the conformer with a specified ID if the ID is negative the first conformation will be returned
         fn getConformer(self: &ROMol, id: i32) -> &Conformer;
+
+        /// Delete the conformation with the specified ID.
+        fn removeConformer(self: Pin<&mut ROMol>, id: u32);
 
     }
 }

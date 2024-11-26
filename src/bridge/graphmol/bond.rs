@@ -1,6 +1,3 @@
-use cxx::UniquePtr;
-use ffi::Bond;
-
 #[cxx::bridge(namespace = "RDKit")]
 mod ffi {
 
@@ -112,3 +109,6 @@ mod ffi {
 
     }
 }
+
+unsafe impl Send for ffi::Bond {}
+unsafe impl Sync for ffi::Bond {}
